@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+
+phases:
+  build:
+    commands:
+      - echo Entered the build phase...
+      - echo Build started on `date`
+      - mvn install -DskipTests
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+      - ls
+artifacts:
+  files:
+    - '*/target/fcrepo-webapp-5.0.0-SNAPSHOT.war'
+  discard-paths: yes
